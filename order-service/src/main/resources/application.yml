@@ -1,0 +1,16 @@
+server:
+  port: 54412
+
+spring:
+  application:
+    name: order-service
+
+eureka:
+  instance:
+    instance-id: order-microservice-instance
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
