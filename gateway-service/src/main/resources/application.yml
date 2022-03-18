@@ -20,13 +20,22 @@ spring:
           predicates:
             - Path=/user/**  # ?? gateway server? /user/**? ???? ??? user-service? ??
 #            - Cookie=valid, user
-            - AddRequestHeader=token, 1234
           filters:
-            - RewritePath=/user/?(?<segment>.*), /$\{segment}
+            - CustomAuthFilter
+#            - AddRequestHeader=token, 1234
+#            - RewritePath=/user/?(?<segment>.*), /$\{segment}
+#            - AuthorizationHeaderFilter
         - id: order-service
           uri: lb://ORDER-SERVICE  # http://localhost:54412  # forwarding (http://localhost:8000/order -> http://localhost:54412)
           predicates:
             - Path=/order/**
 #            - Method
           filters:
-            - RewritePath=/user/?(?<segment>.*), /$\{segment}
+#            - RewritePath=/order/?(?<segment>.*), /$\{segment}
+
+#      default-filters:
+#        - name: GlobalFilter
+#          args:
+#            baseMessage: Spring Cloud Gateway Global Filter
+#            preLogger: true
+#            postLogger: true
