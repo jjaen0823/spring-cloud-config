@@ -1,0 +1,39 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native  # config file 은 default 가 git 이기 때문에 native 로 해줘야 로컬 파일을 사용할 수 있다.
+  cloud:
+    config.server.native:
+          search-locations: file:/Users/jjaen/Workspace/IdeaProjects/Spring Cloud/spring-cloud-config/config
+
+---
+
+# config-consumer
+  # config client
+  # dependency
+    # 1. spring-cloud-config-consumer
+    # 2. spring-cloud-starter-bootstrap
+    # 3. spring-boot-starter-actuator
+    # 4. spring-boot-starter-web
+
+# bootstrap.yml
+  # - dependency 추가해야 사용 가능
+  # - application.yml file 보다 먼저 읽는다
+
+# application.yaml
+management:
+  endpoint:
+    web:
+      exposure:
+        include: ['refresh', 'beans', 'env']  # config-consumer 를 재시작하지 않고 config-server 에서 업데이트한 내용들을 반영할 수 있다.
+
+logging:
+  level:
+    org.springframework: TRACE
+
+
+
