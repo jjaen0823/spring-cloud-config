@@ -1,7 +1,7 @@
 ## Spring Cloud
-#### Spring Cloud Gateway 
-#### Eureka Server (Discovery Server)
-#### Config Server
+#### 1) Spring Cloud Gateway 
+#### 2) Eureka Server (Discovery Server)
+#### 3) Config Server
 #### 
 
 
